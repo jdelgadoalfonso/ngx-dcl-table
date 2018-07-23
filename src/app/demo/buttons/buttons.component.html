@@ -1,0 +1,5 @@
+<div class="wrapper">
+  <div *ngIf="editMode == false" class="edit_button" (click)="edit.emit()"></div>
+  <div *ngIf="editMode == true" class="ok_button" (click)="ok.emit()"></div>
+  <div *ngIf="editMode == true" class="cancel_button" (click)="cancel.emit()"></div>
+</div>

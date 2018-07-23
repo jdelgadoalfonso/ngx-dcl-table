@@ -1,0 +1,39 @@
+<div class="table-responsive" [ngClass]="{'table-responsive': setResponsive}">
+  <table class="table table-striped table-bordered dataTable"
+      [attr.summary]="summary" role="grid" style="width: 100%;">
+    <thead>
+    <tr role="row">
+      <th appNgxDclTableSorting *ngFor="let column of columns; let i = index"
+          [ngStyle]="{'display' : (column.configurable && !column.show) ? 'none' : 'normal'}"
+          [ngTableSorting]="config" [column]="column" (sortChanged)="onChangeTable($event)">
+        <div style="display: flex;">
+          <app-dcl *ngIf="i === cSelectAll.index" [identifier]="{column: column.name}"
+              [type]="cSelectAll.component" [init]="cSelectAll.init"></app-dcl>
+          {{column.title}}
+          <span *ngIf="config && column.sort" style="margin-left: 5px;"></span>
+          <i *ngIf="config && column.sort" class="glyphicon" style="margin-left: auto;"
+            [ngClass]="{'glyphicon-chevron-down': column.sort === 'desc', 'glyphicon-chevron-up': column.sort === 'asc'}">
+          </i>
+        </div>
+      </th>
+    </tr>
+    </thead>
+    <tbody>
+      <ng-template [ngIf]="rows && rows.length > 0" [ngIfElse]="empty_content">
+        <tr *ngFor="let row of rows" [ngStyle]="row?.ngStyle">
+          <td *ngFor="let column of columns" [ngStyle]="{'display' : (column.configurable && !column.show) ? 'none' : 'normal'}">
+            <app-dcl [identifier]="{row: row[id], column: column.name}" [type]="column.component"
+                [init]="column.init" [data]="row[column.name]"></app-dcl>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template #empty_content>
+        <tr>
+          <td [attr.colspan]="columns?.length" style="text-align: center">
+            There are no results that match your search or list is empty
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+</div>
