@@ -21,7 +21,7 @@
     <tbody>
       <ng-template [ngIf]="rows && rows.length > 0" [ngIfElse]="empty_content">
         <tr *ngFor="let row of rows" [ngStyle]="row?.ngStyle">
-          <td *ngFor="let column of columns" [ngStyle]="{'display' : (column.configurable && !column.show) ? 'none' : 'normal'}">
+          <td *ngFor="let column of columns" [ngStyle]="{'display' : (column.configurable && !column.show) ? 'none' : 'normal'}" title="{{column.title}}">
             <app-dcl [identifier]="{row: row[id], column: column.name}" [type]="column.component"
                 [init]="column.init" [data]="row[column.name]"></app-dcl>
           </td>
