@@ -1,6 +1,7 @@
 {
   "name": "ngx-dcl-table",
-  "version": "1.0.2",
+  "version": "1.0.12",
+  "private": false,
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,10 +10,22 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "npm-install-peers": "npm-install-peers",
-    "packagr": "ng-packagr -p ng-package.json"
+    "packagr": "ng-packagr -p ng-package.json",
+    "publish": "npm publish --access=public dist"
   },
-  "private": false,
-  "dependencies": {
+  "files": [
+    "ngx-dcl-table.d.ts",
+    "ngx-dcl-table.metadata.json",
+    "package.json",
+    "public_api.d.ts",
+    "bundles/**/*",
+    "esm2015/**/*",
+    "esm5/**/*",
+    "fesm2015/**/*",
+    "fesm5/**/*",
+    "src/**/*"
+  ],
+  "peerDependencies": {
     "@angular/animations": "^6.0.3",
     "@angular/common": "^6.0.3",
     "@angular/core": "^6.0.3",
@@ -21,10 +34,10 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
-    "ngx-bootstrap": "^3.0.1",
+    "ngx-bootstrap": "3.0.1",
     "ngx-dcl": "1.0.0",
     "core-js": "^2.5.4",
-    "rxjs": "^6.0.0",
+    "rxjs": "6.0.0",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
